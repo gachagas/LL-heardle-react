@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: white;
 }
 
 a {
@@ -27,4 +28,16 @@ a {
     color: white;
     background: black;
   }
+}
+
+.bg-custom-bg {
+  background-color: rgb(18 18 18);
+}
+
+.custom-border-color-selected {
+  border-color: rgb(136 136 136);
+}
+
+.custom-border-color-unselected {
+  border-color: rgb(68 68 68);
 }
