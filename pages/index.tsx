@@ -1,10 +1,33 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+// import styles from "../styles/Home.module.css";
 import iconSVG from "./SVGs/index";
 
+import { useState } from "react";
+import Answerbox from "../components/Answerbox";
+
+const answers = [
+  { key: 0, song: "SKIPPED" },
+  { key: 1, song: "Minami Kotori - Spicaterrible / スピカテリブル" },
+  { key: 2, song: "" },
+  { key: 3, song: "" },
+  { key: 4, song: "" },
+  { key: 5, song: "" },
+];
+
 const Home: NextPage = () => {
+  const [tryNumber, setTryNum] = useState(1);
+
+  const answerList = answers.map((ans) => (
+    <Answerbox
+      id={ans.key}
+      key={ans.key}
+      song={ans.song}
+      tryNumber={tryNumber}
+    />
+  ));
+
   return (
     <>
       <Head>Create Next App</Head>
@@ -30,10 +53,20 @@ const Home: NextPage = () => {
             </header>
           </div>
         </div>
-        <div className="p-3 flex flex-col max-w-screen-sm flex-grow mx-auto w-full"></div>
+        <div className="p-3 flex flex-col max-w-screen-sm flex-grow mx-auto w-full">
+          {answerList}
+        </div>
         <div>Turn up the volume container</div>
         <div className="justify-end">Progress bar Container</div>
         <div>Play button Container</div>
+        <form>
+          <label>
+            Song Name:
+            <input type="text" name="name" style={{ color: "#000000" }} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+
         <div>Autocomplete Container</div>
       </main>
     </>

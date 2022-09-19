@@ -41,3 +41,7 @@ a {
 .custom-border-color-unselected {
   border-color: rgb(68 68 68);
 }
+
+.text-unselected {
+  color: rgb(68 68 68);
+}
