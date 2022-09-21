@@ -9,9 +9,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(18, 18, 18);
+  color: rgb(255, 255, 255);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.bg-custom-bg {
+  background-color: rgb(18 18 18);
+}
+
+.custom-border-color-selected {
+  border-color: rgb(136 136 136);
+}
+
+.custom-border-color-unselected {
+  border-color: rgb(68 68 68);
+}
+
+.text-unselected {
+  color: rgb(68 68 68);
+}
+
+.skip-bg {
+  background-color: rgb(68, 68, 68);
+}
+
+.submit-bg {
+  background-color: rgb(222, 10, 130);
 }
