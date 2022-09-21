@@ -8,14 +8,14 @@ import skipbox from "./Skipbox";
 import stats from "./Stats";
 
 const icons = {
-  about: about,
-  box: box,
-  cross: cross,
-  heart: heart,
-  magnifying: magnifying,
-  question: question,
-  skipbox: skipbox,
-  stats: stats,
+  about,
+  box,
+  cross,
+  heart,
+  magnifying,
+  question,
+  skipbox,
+  stats,
 };
 
 export default icons;
