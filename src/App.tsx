@@ -4,6 +4,7 @@ import Answerbox from "./components/Answerbox";
 import iconSVG from "./components/SVGs/index";
 
 import "./App.css";
+import Form from "./components/Form";
 
 const answers = [
   { key: 0, song: "SKIPPED" },
@@ -26,9 +27,14 @@ const App: React.FunctionComponent = () => {
       tryNumber={tryNumber}
     />
   ));
+
+  function addAnswer(song: string): void {
+    const newAnswer = { key: answers.length, song };
+    console.log(newAnswer);
+  }
+
   return (
     <>
-      <head>LL Heardle!</head>
       <main style={{ height: "100vh" }} className="bg-custom-bg flex flex-col">
         <div className="border-b custom-border-color-selected">
           <div className="max-w-3xl mx-auto">
@@ -59,37 +65,7 @@ const App: React.FunctionComponent = () => {
         <div>Play button Container</div>
         <div className="m-auto max-w-screen-sm w-full ">
           <div className="mx-3 mb-3">
-            <form>
-              <div className="flex w-full border custom-border-color-unselected">
-                {/* {iconSVG.magnifying} */}
-                <input
-                  className="w-full border-none bg-transparent py-3 pr-3 pl-9 "
-                  type="text"
-                  name="name"
-                  placeholder="Know it? Search for the artist/title"
-                />
-                <div className="relative right-3 top-4">
-                  {/* {iconSVG.magnifying} */}
-                </div>
-              </div>
-              <div className="flex justify-between pt-3">
-                <button
-                  type="button"
-                  value="Submit"
-                  className="flex-none px-2 py-2 tracking-widest font-bold text-sm skip-bg"
-                >
-                  SKIP (+4s)
-                </button>
-
-                <button
-                  type="button"
-                  value="Submit"
-                  className=" flex-none px-2 py-2 tracking-widest font-bold text-sm submit-bg"
-                >
-                  SUBMIT
-                </button>
-              </div>
-            </form>
+            <Form addAnswer={addAnswer} />
           </div>
         </div>
       </main>
