@@ -7,36 +7,49 @@ import iconSVG from "./components/SVGs/index";
 import "./App.css";
 import Form from "./components/Form";
 
-// const answers = [
-//   { key: 0, song: "SKIPPED" },
-//   { key: 1, song: "Minami Kotori - Spicaterrible / スピカテリブル" },
-//   { key: 2, song: "SKIPPED" },
-//   { key: 3, song: "SKIPPED" },
-//   { key: 4, song: "" },
-//   { key: 5, song: "" },
-// ];
-
 interface IAnswers {
   key: number;
   song: string;
+  answered: boolean;
 }
 
 const App: React.FunctionComponent = () => {
-  const [answers, setAnswers] = useState<IAnswers[]>([]);
+  const [answers, setAnswers] = useState<IAnswers[]>([
+    { key: 0, song: "", answered: false },
+    { key: 1, song: "", answered: false },
+    { key: 2, song: "", answered: false },
+    { key: 3, song: "", answered: false },
+    { key: 4, song: "", answered: false },
+    { key: 5, song: "", answered: false },
+  ]);
   // eslint-disable-next-line
-  const [tryNumber, setTryNum] = useState(5);
+  const [tryNumber, setTryNumber] = useState(0);
 
   const answerList = answers.map((ans) => (
     <Answerbox
       id={ans.key}
       key={ans.key}
       song={ans.song}
+      answered={ans.answered}
       tryNumber={tryNumber}
     />
   ));
 
+  // change to modify the trynumber
   function addAnswer(song: string): void {
-    setAnswers((prevState) => [...prevState, { key: answers.length, song }]);
+    if (tryNumber === 5) {
+      return;
+    }
+
+    const newState = answers;
+
+    newState[tryNumber].song = song;
+    newState[tryNumber].answered = true;
+    console.log("trynumber", tryNumber);
+    console.log("answers", answers);
+
+    setTryNumber(tryNumber + 1);
+    setAnswers(newState);
   }
 
   return (

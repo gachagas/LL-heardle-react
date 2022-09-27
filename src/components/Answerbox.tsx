@@ -6,10 +6,11 @@ interface Answer {
   key: number;
   song: string;
   tryNumber: number;
+  answered: boolean;
 }
 
 const Answerbox = (commonProps: Answer): JSX.Element => {
-  const { id, song, tryNumber } = commonProps;
+  const { id, song, tryNumber, answered } = commonProps;
 
   if (id === tryNumber) {
     console.log(`Logging key `, id);
@@ -25,7 +26,7 @@ const Answerbox = (commonProps: Answer): JSX.Element => {
           </div>
         </div>
       );
-    } else if (song.length !== 0) {
+    } else if (song.length !== 0 && answered) {
       return (
         <div className="flex">
           <div className="mr-2">{iconSVG.cross}</div>
@@ -34,8 +35,9 @@ const Answerbox = (commonProps: Answer): JSX.Element => {
       );
     } else {
       return (
-        <div className={"w-5 h-5"}>
-          {/* ${id === tryNumber ? `HELLO2` : `HELLO`} */}
+        <div className="flex">
+          <div className="mr-2 h-6"></div>
+          <div className="text-sm">{song}</div>
         </div>
       );
     }
