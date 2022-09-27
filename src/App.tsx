@@ -1,3 +1,4 @@
+// /* eslint-disable */
 import React, { useState } from "react";
 
 import Answerbox from "./components/Answerbox";
@@ -6,16 +7,22 @@ import iconSVG from "./components/SVGs/index";
 import "./App.css";
 import Form from "./components/Form";
 
-const answers = [
-  { key: 0, song: "SKIPPED" },
-  { key: 1, song: "Minami Kotori - Spicaterrible / スピカテリブル" },
-  { key: 2, song: "SKIPPED" },
-  { key: 3, song: "SKIPPED" },
-  { key: 4, song: "" },
-  { key: 5, song: "" },
-];
+// const answers = [
+//   { key: 0, song: "SKIPPED" },
+//   { key: 1, song: "Minami Kotori - Spicaterrible / スピカテリブル" },
+//   { key: 2, song: "SKIPPED" },
+//   { key: 3, song: "SKIPPED" },
+//   { key: 4, song: "" },
+//   { key: 5, song: "" },
+// ];
+
+interface IAnswers {
+  key: number;
+  song: string;
+}
 
 const App: React.FunctionComponent = () => {
+  const [answers, setAnswers] = useState<IAnswers[]>([]);
   // eslint-disable-next-line
   const [tryNumber, setTryNum] = useState(5);
 
@@ -29,8 +36,7 @@ const App: React.FunctionComponent = () => {
   ));
 
   function addAnswer(song: string): void {
-    const newAnswer = { key: answers.length, song };
-    console.log(newAnswer);
+    setAnswers((prevState) => [...prevState, { key: answers.length, song }]);
   }
 
   return (
