@@ -6,6 +6,9 @@ import iconSVG from "./components/SVGs/index";
 
 import "./App.css";
 import Form from "./components/Form";
+import Endbanner from "./components/Endbanner";
+
+const CORRECT_ANSWER = "Heanna Sumire - Mitero! / みてろ！";
 
 interface IAnswers {
   key: number;
@@ -24,6 +27,7 @@ const App: React.FunctionComponent = () => {
   ]);
   // eslint-disable-next-line
   const [tryNumber, setTryNumber] = useState(0);
+  const [correct, setCorrect] = useState(false);
 
   const answerList = answers.map((ans) => (
     <Answerbox
@@ -37,7 +41,7 @@ const App: React.FunctionComponent = () => {
 
   // change to modify the trynumber
   function addAnswer(song: string): void {
-    if (tryNumber === 5) {
+    if (tryNumber === 6) {
       return;
     }
 
@@ -45,8 +49,8 @@ const App: React.FunctionComponent = () => {
 
     newState[tryNumber].song = song;
     newState[tryNumber].answered = true;
-    console.log("trynumber", tryNumber);
-    console.log("answers", answers);
+
+    if (song.localeCompare(CORRECT_ANSWER) === 0) setCorrect(true);
 
     setTryNumber(tryNumber + 1);
     setAnswers(newState);
@@ -77,7 +81,7 @@ const App: React.FunctionComponent = () => {
           </div>
         </div>
         <div className="p-3 flex flex-col max-w-screen-sm flex-grow mx-auto w-full">
-          {answerList}
+          {tryNumber === 6 || correct ? Endbanner() : answerList}
         </div>
         <div>Turn up the volume container</div>
         <div className="justify-end">Progress bar Container</div>
